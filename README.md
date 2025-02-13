@@ -20,7 +20,7 @@ Usage:
 - Just `./WOTD.sh` will have you play the game. `quit` or `q` will quit.
 - `./WOTD.sh -a <word> <definition>` will add a word with a definition.
 - `./WOTD.sh -s w <file>` and `./WOTD.sh -s a <file>` will set filepath for words and defintions respectively.
-- `./WOTD.sh -s m <mode>` will set a mode.
+- `./WOTD.sh -s m <mode>` will set a mode.\
 Note:\
 Mode 2 has some ugly code to prevent as many duplicate answer opetions. Duplicates are still, however, possible.
 # dates
