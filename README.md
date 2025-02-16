@@ -30,7 +30,8 @@ Mode 2 has some ugly code to prevent as many duplicate answer opetions. Duplicat
 So far only isLeapYear and getDaysShort work.
 # tracker
 Basic days-since tracker. It will write to and read from the file called `data `. If this is unsatisfactory, change all of the occurences in code yourself.\
-It tracks occurences as single letters and can track multiple occurences at once (it doesn't care if there are multiple occurences per day). You can use pretty much all letters and numbers\
+It tracks occurences as single letters and can track multiple occurences at once (it doesn't care if there are multiple occurences per day). You can use pretty much all letters and numbers
+
 Usage:\
 Note that you can use either `./tracker -<command>` or `./tracker <command>` in all cases except for help, which is special.
 - `./tracker -a <letter>` will add letter to the current day's date.
