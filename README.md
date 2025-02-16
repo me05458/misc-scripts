@@ -1,9 +1,10 @@
 # misc-scripts
 Random scripts and small projects I use in my terminal
-# WOTD
-Game for learning words and vocabulary.\
 To install:
 ```git clone https://github.com/me05458/misc-scripts&&cd misc-scripts```\
+# WOTD
+Game for learning words and vocabulary.\
+To configure:
 The words and answers go in two separate files, separated by new lines.\
 Config file format:
 ```
@@ -27,3 +28,13 @@ Note:\
 Mode 2 has some ugly code to prevent as many duplicate answer opetions. Duplicates are still, however, possible.
 # dates
 So far only isLeapYear and getDaysShort work.
+# tracker
+Basic days-since tracker. It will write to and read from the file called `data `. If this is unsatisfactory, change all of the occurences in code yourself.\
+It tracks occurences as single letters and can track multiple occurences at once (it doesn't care if there are multiple occurences per day). You can use pretty much all letters and numbers\
+Usage:\
+Note that you can use either `./tracker -<command>` or `./tracker <command>` in all cases except for help, which is special.
+- `./tracker -a <letter>` will add letter to the current day's date.
+- `./tracker -o` will report the contents of the data file in a readable way.
+- `./tracker -r` will clear the file.
+- `./tracker -f <letter>` will report days since letter.
+- `./tracker <letter>` will report days since letter (unless letter is one of the above commands, in which case you should use -f).
