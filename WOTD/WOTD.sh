@@ -8,7 +8,18 @@ wordnum=$(sed -n '1p' "$configpath")
 mode=$(sed -n '4p' "$configpath")
 
 i=2
-if [ "$1" == "-a" ]
+if [ "$1" == "-h" -o "$1" == "--help" -o "$1" == "-help" ]
+
+then
+    echo "Actions:"
+    echo "-s a <answerfile> sets answer file"
+    echo "-s w <wordfile> sets word file"
+    echo "-s m <mode> sets mode"
+    echo "-a <word> <answer> sets word"
+    echo "-h, -help, --help, displays help"
+    echo "anything else plays game."
+
+elif [ "$1" == "-a" ]
     then
         echo "$2" >> "$wordpath"
         echo "$3" >> "$answerpath"
@@ -137,7 +148,6 @@ else
 
         done
     else
-    echo "hi"
         while [ "$i" != 0 ]
         do
         num=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
