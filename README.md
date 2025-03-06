@@ -17,7 +17,7 @@ Config file format:
 Modes:
 - 0 - displays a definition and you have to write a word.
 - 1 - displays a word and you have to write a definition.
-- 2 - displays a word and several possible definitions (multiple choice)
+- 2 - displays a word and several possible definitions (multiple choice). This only works for more than four possible words.
 
 Usage:
 - Just `./WOTD.sh` will have you play the game. `quit` or `q` will quit.
@@ -27,7 +27,7 @@ Usage:
 - `./WOTD.sh -h`, `./WOTD.sh -help`, or `./WOTD.sh --help` will provide a basic list of possible commands.
 
 Note:\
-Mode 2 has some ugly code to prevent as many duplicate answer opetions. Duplicates are still, however, possible.
+Mode 2 has some ugly code to prevent as many duplicate answer opetions. Duplicates are still, however, possible. Also I'm not sure the random generator is random.
 # dates
 So far only isLeapYear and getDaysShort work.
 # tracker

@@ -21,13 +21,21 @@ then
 
 elif [ "$1" == "-a" ]
     then
-        echo "$2" >> "$wordpath"
-        echo "$3" >> "$answerpath"
-        wordnum=$(("$wordnum" +1))
-        echo "$wordnum" > "$configpath"
-        echo "$answerpath" >> "$configpath"
-        echo "$wordpath" >> "$configpath"
-        echo "$mode" >> "$configpath"
+        if [ "$2 " == "" ]
+        then
+            echo "Specify a word and definition!"
+        elif [ "$3" == "" ]
+        then
+            echo "Please specify a definition!"
+        else
+            echo "$2" >> "$wordpath"
+            echo "$3" >> "$answerpath"
+            wordnum=$(("$wordnum" +1))
+            echo "$wordnum" > "$configpath"
+            echo "$answerpath" >> "$configpath"
+            echo "$wordpath" >> "$configpath"
+            echo "$mode" >> "$configpath"
+        fi
 elif [ "$1" == "-s" ]
     then
         if [ "$3" == "" ]
@@ -61,92 +69,96 @@ elif [ "$1" == "-s" ]
 else
     if [ "$mode" == 2 ]
     then
-    echo "2"
-        while [ "$i" != 0 ]
-        do
-            num=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
-            word=$(head -"$num" "$wordpath" | tail -1)
-            answer=$(head -"$num" "$answerpath" | tail -1)
-            nnum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
-            if [ "$nnum" == "$num" ]
-            then
-                if [ "$nnum"+1 == "$wordnum" ]
+        if [ "$wordnum" -lt 5 ]
+        then
+            echo "The number of words is too small to propperly play multiple choice mode. Please add more numbers!"
+        else
+            while [ "$i" != 0 ]
+            do
+                num=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
+                word=$(head -"$num" "$wordpath" | tail -1)
+                answer=$(head -"$num" "$answerpath" | tail -1)
+                nnum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
+                if [ "$nnum" == "$num" ]
                 then
-                    nnum="0"
-                else
-                    nnum=$(("$nnum" + 1))
+                    if [ "$nnum"+1 == "$wordnum" ]
+                    then
+                        nnum="0"
+                    else
+                        nnum=$(("$nnum" + 1))
+                    fi
                 fi
-            fi
-            answer2=$(head -"$nnum" "$answerpath" | tail -1)
-            mnum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
-            if [ "$mnum" == "$num" -o "$mnum" == "$nnum" ]
-            then
-                if [ "$mnum"+1 == "$wordnum" ]
+                answer2=$(head -"$nnum" "$answerpath" | tail -1)
+                mnum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
+                if [ "$mnum" == "$num" -o "$mnum" == "$nnum" ]
                 then
-                    mnum="0"
-                else
-                    mnum=$(("$nnum" + 1))
+                    if [ "$mnum"+1 == "$wordnum" ]
+                    then
+                        mnum="0"
+                    else
+                        mnum=$(("$nnum" + 1))
+                    fi
                 fi
-            fi
-            answer3=$(head -"$mnum" "$answerpath" | tail -1)
-            onum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
-            if [ "$onum" == "$num" -o "$onum" == "$nnum" -o "$onum" == "$mnum" ]
-            then
-                if [ "$onum"+1 == "$wordnum" ]
+                answer3=$(head -"$mnum" "$answerpath" | tail -1)
+                onum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-"$wordnum")
+                if [ "$onum" == "$num" -o "$onum" == "$nnum" -o "$onum" == "$mnum" ]
                 then
-                    onum="0"
-                else
-                    onum=$(("$onum" + 1))
+                    if [ "$onum"+1 == "$wordnum" ]
+                    then
+                        onum="0"
+                    else
+                        onum=$(("$onum" + 1))
+                    fi
                 fi
-            fi
-            answer4=$(head -"$onum" "$answerpath" | tail -1)
-            echo "$word:"
-            ansnum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-4)
-            #echo "$ansnum"
-            if [ "$ansnum" == 1 ]
-            then
-                echo "1. "$answer""
-                echo "2. "$answer2""
-                echo "3. "$answer3""
-                echo "4. "$answer4""
-            elif [ "$ansnum" == 2 ]
-            then
-                echo "1. "$answer2""
-                echo "2. "$answer""
-                echo "3. "$answer3""
-                echo "4. "$answer4""
-            elif [ "$ansnum" == 2 ]
-            then
-                echo "1. "$answer2""
-                echo "2. "$answer3""
-                echo "3. "$answer""
-                echo "4. "$answer4""
-            else
-                echo "1. "$answer2""
-                echo "2. "$answer3""
-                echo "3. "$answer4""
-                echo "4. "$answer""
-            fi
-            read input
-            if [ "$input" == "$ansnum" ]
-            then
-                echo "Correct!"
-                i=1
-            elif [ "$input" == "quit" ]
-            then
-                i=0
+                answer4=$(head -"$onum" "$answerpath" | tail -1)
+                echo "$word:"
+                ansnum=$(shuf --random-source='/dev/urandom' -n 1 -i 1-4)
+                #echo "$ansnum"
+                if [ "$ansnum" == 1 ]
+                then
+                    echo "1. "$answer""
+                    echo "2. "$answer2""
+                    echo "3. "$answer3""
+                    echo "4. "$answer4""
+                elif [ "$ansnum" == 2 ]
+                then
+                    echo "1. "$answer2""
+                    echo "2. "$answer""
+                    echo "3. "$answer3""
+                    echo "4. "$answer4""
+                elif [ "$ansnum" == 2 ]
+                then
+                    echo "1. "$answer2""
+                    echo "2. "$answer3""
+                    echo "3. "$answer""
+                    echo "4. "$answer4""
+                else
+                    echo "1. "$answer2""
+                    echo "2. "$answer3""
+                    echo "3. "$answer4""
+                    echo "4. "$answer""
+                fi
+                read input
+                if [ "$input" == "$ansnum" ]
+                then
+                    echo "Correct!"
+                    i=1
+                elif [ "$input" == "quit" ]
+                then
+                    i=0
 
-            elif [ "$input" == "q" ]
-            then
-                i=0
+                elif [ "$input" == "q" ]
+                then
+                    i=0
 
-            else
-                echo "Incorrect!"
-                echo "Correct answer is "$ansnum""
-                i=1
-            fi
+                else
+                    echo "Incorrect!"
+                    echo "Correct answer is "$ansnum""
+                    i=1
+                fi
 
-        done
+            done
+        fi
     else
         while [ "$i" != 0 ]
         do
