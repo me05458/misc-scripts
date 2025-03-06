@@ -29,7 +29,9 @@ Usage:
 Note:\
 Mode 2 has some ugly code to prevent as many duplicate answer opetions. Duplicates are still, however, possible. Also I'm not sure the random generator is random.
 # dates
-So far only isLeapYear and getDaysShort work.
+So far only isLeapYear and getDaysShort work.\
+isLeapYear - takes an integer for year and reports 1 if it's a leap year and 0 otherwise.\
+getDaysShort - takes a day, month, and year integer (in that order) and returns a number of days (since 1900 because dates before that do not exist)
 # tracker
 install:
 ```
