@@ -49,3 +49,15 @@ Note that you can use either `./tracker -<command>` or `./tracker <command>` in 
 - `./tracker -f <letter>` will report days since letter.
 - `./tracker <letter>` will report days since letter (unless letter is one of the above commands, in which case you should use -f).
 - `./tracker --help` (and not `-help` or `-h`) will provide a list of available actions.
+
+# playlist
+install:
+```
+cd playlist
+```
+Playlist goes in `data` file, format doesn't matter at present.
+
+Usage
+- `./playlist` will shuffle through the whole playlist.
+- `./playlist -s <word>` (or `-set`) will shuffle only through playlist entries containing word.
+- `./playlist -a <entry>` (or `-add`) will add an entry to playlist. Quotes should be used to contain anything with spaces. (`./playlist -a "I like cats"` would work while `./playlist -a I like cats` would not).
