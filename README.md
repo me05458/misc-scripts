@@ -1,5 +1,5 @@
 # misc-scripts
-Random scripts and small projects I use in my terminal
+Random scripts and small projects I use in my terminal\
 To install:
 ```git clone https://github.com/me05458/misc-scripts&&cd misc-scripts```
 # WOTD
