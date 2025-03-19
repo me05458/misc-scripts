@@ -16,13 +16,14 @@ then
     echo "Arguments:"
     echo "-h, --help, -help - this output"
     echo "-s <ARGUMENT>, -set <ARGUMENT> - shuffles a subset with <ARGUMENT>"
+    echo "-a <ARGUMENT> - adds new playlist element called <ARGUMENT>"
 elif [ "$1" == "-a" -o "$1" == "-add" ]
 then
     if [ "$2" == "" ]
         then
             echo "Please specify entry to add!"
     else
-    thing=$(cat "$datapath" | grep "$2")
+        thing=$(cat "$datapath" | grep "$2")
         if [ "$thing" != "" ]
         then
             echo "WARNING! Such entry already exists in file! Add anyway? (y/n)"
@@ -32,8 +33,8 @@ then
         fi
         if [ "$inputer" == "y" ]
         then
+
             echo "$2" >> "$datapath"
-        else
         fi
     fi
 else
