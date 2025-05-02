@@ -3,3 +3,6 @@ Description=Checks if VPN works
 
 [Service]
 ExecStart=~/misc-scripts/VPNCheck/VPNcheck.sh
+
+[Install]
+WantedBy=multi-user.target
