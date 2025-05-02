@@ -61,3 +61,14 @@ Usage
 - `./playlist` will shuffle through the whole playlist.
 - `./playlist -s <word>` (or `-set`) will shuffle only through playlist entries containing word.
 - `./playlist -a <entry>` (or `-add`) will add an entry to playlist. Quotes should be used to contain anything with spaces. (`./playlist -a "I like cats"` would work while `./playlist -a I like cats` would not).
+
+# VPNCheck
+Tests if you're connected to your VPN and notifies if not from the terminal. This only works for mullvad vpn.\
+To set up:
+```
+cd VPNCheck
+sudo chmod +x VPNcheck.sh
+```
+To run:\
+For the most basic usage, `./VPNcheck.sh`\
+The setup script is supposed to set it up to run as a systemd service so that it doesn't have to run in terminals. However, it doesn't work. In any case, if you don't want to run the script out of the terminal, you have to do something to set it up on your own.
