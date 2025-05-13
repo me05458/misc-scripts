@@ -72,3 +72,13 @@ sudo chmod +x VPNcheck.sh
 To run:\
 For the most basic usage, `./VPNcheck.sh`\
 The setup script is supposed to set it up to run as a systemd service so that it doesn't have to run in terminals. However, it doesn't work. In any case, if you don't want to run the script out of the terminal, you have to do something to set it up on your own.
+
+# KnitSphere
+A little program I wrote a long time ago to generate knitting patterns for spheres. It tells you how many stitches you must have per row and how many to add.\
+install:
+```
+cd SphereKnit
+make
+```
+run:\
+`./knit <RADIUS>` will give instructions for a half sphere of radius RADIUS (just knit the same as the first half sphere but in reverse for the second half). Running simply `./knit` will use the default radius of 5.
