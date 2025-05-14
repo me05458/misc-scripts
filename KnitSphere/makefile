@@ -6,7 +6,7 @@ OBJS = \
 REBUILDABLES = $(OBJS) $(LINK_TARGET)
 
 all: $(LINK_TARGET)
-	@echo All done! Run ./knit <RADIUS> to obtain a sphere pattern!
+	@echo "All done! Run ./knit <RADIUS> to obtain a sphere pattern!"
 
 $(LINK_TARGET): $(OBJS)
 	gcc -o $@ $(OBJS) -lm

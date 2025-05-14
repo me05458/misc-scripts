@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
         rad = 5;
     }
     printf("SPHERE OF RADIUS %d\n----------------------\n",rad);
-    int layers = rad*2;
+    double layers = rad*1.5;
     double x1 = 0;
     int stitches = 0;
     int tmp = 0;
